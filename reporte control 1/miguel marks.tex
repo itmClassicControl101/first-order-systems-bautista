@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\usepackage{pgfplots}
+\usepackage[utf8]{inputenc}
+\usepackage[left=4cm,right=3cm,top=4cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\setlength{\parskip}{\baselineskip}
+\renewcommand{\baselinestretch}{1}
+\title{CONTROL 1}
+\author{INSTITUTO TECNOLÓGICO DE MORELIA\\''José María Morelos y Pavón''\\ \\ \\ \\ \\Materia:CONTROL 1\\ \\ \\ \\ \\Profesor: Gerardo Marcx Chávez Campos\\ \\ \\ \\ \\Alumno:Miguel Bautista Orta\\No.Control:13120116)\\\\\\}
+\begin{document}
+\maketitle
+\section{Introducción}
+en esta practica veremos como sacar la función de trasferencia para el llenado de un tinaco a si mismo sacaremos la función de transferencia seguido  sacar la transformada dela place para después convertirlo en función de la transformada inversa para ver el comportamiento de nuestro sistema y así establecer la formula para traficar en scilab
+
+\subsection{DESARROLLO}
+
+Desarrolle
+\begin{equation}
+w_i(t)=\frac{Adh(t)}{dt}+rgh(t)
+\end{equation}
+\\a) sacar la función de transferencia c) del sistema de llenado de un tinaco de agua y resolver el problema 
+\\ \\
+SOLUCIÓN
+\\\\\\a) Partimos de la función aplicando la place
+\\\\\\a).1\begin{equation}
+w_i(s)=\frac{h(s)}{Re}+As*h(s)
+\end{equation}
+\\\\a).2 aplicamos álgebra para los siguientes pasos\\\\
+\begin{equation}
+w_i(s)=\frac{h(s)}{R}+\frac{Adh(s)}{d(s)}
+\end{equation}
+\\ a).3 \begin{equation}
+w_i(s)=h(s)(\frac{1}{R}+A(s))
+\end{equation}
+\\ a).4 \begin{equation}
+\frac{H(s)}{w_i(s)}=\frac{1}{\frac{1}{R}+A(s)}
+\end{equation}
+\\
+\\
+\\ a).5 \begin{equation}
+g(s)=\frac{1}{A(\frac{1}{RA}+s)}=\frac{\frac{1}{A}}{\frac{1}{RA}+s}
+\end{equation} 
+\\\
+\\\ a).6 ecuacion que el profe proporciono en clases   
+\begin{equation}
+  Y(s)=\frac{1}{s}\frac{bs+c}{ds +a}=\frac{bs+c}{s(ds+a)}
+\end{equation} 
+\\ despejando  \begin{equation}
+Y(s)=\frac{bs+c}{s(ds+a)}=\frac{A}{s}+\frac{B}{ds+a}
+\end{equation}
+\\ forma para sacar A , B \begin{equation}
+bs+c = A(ds+a)+B(s)
+\end{equation}
+\\\ sacamos valores de A , B \begin{equation}
+A=\frac{a}{c} 
+\end{equation} 
+\\ \begin{equation}
+B=d\frac{a}{c}+b
+\end{equation} 
+\\\ una ves obtenido A , B sacamos la función \begin{equation}
+Y(s)=\frac{a}{c} \frac{1}{s}+\frac{bc-ad}{dc}
+\end{equation}
+\\\ 
+\\\
+\\\
+\\\ se saca la transformada inversa \begin{equation}
+Y(t)=\frac{a}{c} U(t) + \frac{bc-ad}{dc} e^-(t\frac{a}{d})
+\end{equation}
+
+\section{codigo de scilab de nuestra función}
+\begin{lstlisting}
+	function[y]=funcion(a,b,c,d)
+	x=0:0.1:20;
+	y=(a/c)+(((b*c)-(a*d))/(d*c))*exp((-a*x)/d);
+	
+	plot(x,y)
+	
+	endfunction;
+\end{lstlisting}
+\section{Graficas} \\
+\\ cuando la entrada es igual que la salida (1,0,1,0) figura 1 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{"../Pictures/entrada igual a la salida"}
+\caption{}
+\label{fig:entrada-igual-a-la-salida}
+\end{figure}
+\\
+\\
+\\ 
+\\ cuando la entrada es mayor que la salida (1,0,1,1) figura 2
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{"../Pictures/entrada mayor que salida control"}
+\caption{}
+\label{fig:entrada-mayor-que-salida-control}
+\end{figure}
+\\ salida mayor que entrada figura 3
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{"../Pictures/mayor entrada"}
+\caption{}
+\label{fig:mayor-entrada}
+\end{figure}
+\\ Codigo del profe
+\begin{lstlisting}
+s= %s
+poly (0 , 's')
+k=1;
+Tau = 1;
+symplesys=syslin('c',k/(1+Tau*s))
+x=0:0.01:15;
+y=csim('atep', x,simplesys)
+plot(x,y)
+\end{lstlisting}
+
+\\grafica del profe figura 4
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\linewidth]{"../Pictures/marks mayor entrada"}
+\caption{}
+\label{fig:marks-mayor-entrada}
+\end{figure}
+\section{CONCLUCION}
+
+\\ Esta a sido una de las practicas mas interesantes del semestre ya que non tenia ni idea de como usar scibab también no tenia ni idea de como usar látex a si que estuvo interesante buen en esa practica vimos la forma aplica para sacar la función de transferencia para un sistema de cualquier tipo aplicado en un egercicio ya que vimos la forma de como sacar la función de transferencia a si mismo sacar la función inversa de la ecuacion y la función escalón para poder llegar a la ecuacion que nos daría el comportamiento de del sistema
+\end{document}
