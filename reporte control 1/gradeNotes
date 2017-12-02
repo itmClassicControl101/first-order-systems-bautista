@@ -1,0 +1,32 @@
+Check list for laboratory reports.
+
+Formato y forma:
+- [ ] Ortografia: Te recomiendo ampliamente empezar a leer, se nota que has realizado pocos ejercicios de lectura y de escritura. 
+Empieza con un libro interesante y sencicllo como el Alquimista. 
+- [ ] Estilo: La redacción es muy mala, y no se diga las faltas de ortografía
+- [ ] Estructura
+- [x] Originalidad
+- [ ] Imagens, Tablas y Referencias
+- [ ] Estilo de referencias: No se hace referencia a ningun documento.
+
+Contenido:
+- [x] Introducción
+- [x] Metodología
+- [x] Desarrollo
+- [x] Simulación
+- [ ] Resultados: Falta comentar acerca de los resultados que se obtienen.
+- [x] Conclusiones
+
+Comparación de los resultados:
+- [-] Scilab y Ecuaciones 
+- [x] Respuesta al escalón
+- [x] Modos de operación del sistema Wo=Wi, Wo><Wi
+- [ ] Conclusiones: No se usa apropiadamente
+
+Repositorio:
+- [ ] Carpetas
+- [ ] Código Scilab
+- [x] Código de Latex
+- [x] Entregado en tiempo
+
+Grade= 80
